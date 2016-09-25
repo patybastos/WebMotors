@@ -5,7 +5,7 @@ class Model < ActiveRecord::Base
     #search the models
     uri = URI("http://www.webmotors.com.br/carro/modelos")
 
-    response = Net::HTTP.post_form(uri, { marca: make.id })
+    response = Net::HTTP.post_form(uri, { marca: make.webmotors_id })
     models_json = JSON.parse response.body
 
     # Itera no resultado e grava os modelos que ainda não estão persistidas

@@ -4,6 +4,6 @@ class ModelsController < ApplicationController
     make = Make.where(webmotors_id: params[:webmotors_make_id]).first
 
     Model.sync_api(make) if make.present?
-    @models = make.models
+    @models = make.models.order(:name)
   end
 end
