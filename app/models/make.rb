@@ -10,8 +10,8 @@ class Make < ActiveRecord::Base
     json = JSON.parse response.body
 
     # Itera no resultado e grava as marcas que ainda não estão persistidas
-    json.each do |make_params|
-      make = Make.where(name: make_params["Nome"], webmotors_id: make_params["Id"]).first_or_create
+    json.map do |make_params|
+      Make.where(name: make_params["Nome"], webmotors_id: make_params["Id"]).first_or_create
     end
   end
 end

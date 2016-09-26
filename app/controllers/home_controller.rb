@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
   def index
-    Make.sync_api
-    @makes = Make.all.order(:name)
+    @makes = Make.sync_api
   end
 end
